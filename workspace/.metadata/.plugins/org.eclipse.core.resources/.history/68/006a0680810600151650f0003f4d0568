@@ -1,0 +1,37 @@
+package nntest.util;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import net.sourceforge.sizeof.SizeOf;
+
+public class NNUtil {
+	static {
+		SizeOf.skipFinalField(false);
+		SizeOf.skipStaticField(true);
+		SizeOf.setMinSizeToLog(0);
+	}
+	public static long getObjectSize(Object obj) {
+		long sSize = SizeOf.deepSizeOf(obj);
+		return sSize;
+	}
+	public static void log(String s) {
+		//Calendar c = Calendar.getInstance();
+		//SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
+		System.out.printf("%1$tY : %s%n", new Date(), s);
+	}
+	public static void log(String strMessage, String... args) {
+		
+	}
+	
+	public static long start() {
+		log("start");
+		return System.currentTimeMillis();
+	}
+	
+	public static void end(long lngStartTime) {
+		log("end");
+	}
+
+}

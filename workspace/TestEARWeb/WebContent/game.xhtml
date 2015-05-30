@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+<!-- a. 適用するテンプレートの指定 -->
+<ui:composition template="template.xhtml">
+  <!-- b. ページ固有の設定（title）を指定 -->
+  <ui:define name="title">数字当てゲーム</ui:define>
+  <!-- b. ページ固有の設定（content）を指定 -->
+  <ui:define name="content">
+    <!-- c. HTTPポスト・リクエストを送信するためのformタグ -->
+    <h:form>
+      <div>
+        <!-- d. ユーザーへのメッセージ -->
+        <h:outputFormat value="{0}さん、{1}">
+          <f:param value="#{userBean.name}"/><!-- {0}に入る値 -->
+          <f:param value="3つの異なる数字を入力してください。"/><!-- {1}に入る値-->
+        </h:outputFormat>
+        <!-- 実行時「ユーザー名さん、3つの異なる数字を入力してください。」と表示される-->
+      </div>
+      <div>
+        <!-- e. 数字を入力するためのテキスト・フィールド -->
+        <h:inputText size="2" maxlength="1"/>
+        <h:inputText size="2" maxlength="1"/>
+        <h:inputText size="2" maxlength="1"/>
+        <!-- f. サーバーに回答を送信するためのボタン -->
+        <h:commandButton value="回答"/>
+        <!-- g. ゲームをやり直すためのボタン -->
+        <h:commandButton value="やり直す" action="index"/>
+      </div>
+      <h2>回答履歴</h2>
+      <!-- 次回ここに回答履歴のテーブルを追加 -->
+    </h:form>
+  </ui:define>
+</ui:composition>
+</html>

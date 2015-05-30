@@ -1,0 +1,62 @@
+package nntest.setvarience;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import nntest.util.NNUtil;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Main main = new Main();
+		
+		Set<Integer> s1 = new HashSet<Integer>();
+		Set<Integer> s2 = new HashSet<Integer>();
+		
+		main.log("construct start");
+		main.constructSetData(s1, 10000); // 1千万
+		main.constructSetData(s2, 10000);
+		main.log("construct end");
+		
+		main.log("s1 size:" + NNUtil.getObjectSize(s1));
+		main.log("s2 size:" + NNUtil.getObjectSize(s2));
+		
+		
+		main.log("count:" + s1.size());
+		main.log("diff start");
+		s1.removeAll(s2);
+		main.log("diff end");
+		main.log("count:" + s1.size());
+		
+	}
+	
+	private void printSetData(Set<Integer> s, int amount) {
+		Iterator<Integer> it = s.iterator();
+		while (it.hasNext()) {
+			Integer i = it.next();
+			log(i.toString());
+		}
+	}
+	
+	private void constructSetData(Set<Integer> s, int amount) {
+		int add = 0;
+		int count = 0;
+		for (int i = 0; i < amount; i++) {
+			add = (int)(Math.random() * 10);
+			count += add;
+			s.add(new Integer(count));
+		}
+	}
+	
+	private void log(String s) {
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS : ");
+		
+		System.out.println(sdf.format(c.getTime()) + s);
+	}
+
+}

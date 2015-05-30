@@ -1,0 +1,13 @@
+package nntest.util;
+
+import net.sourceforge.sizeof.SizeOf;
+
+public class NNUtil {
+	public static long getObjectSize(Object obj) {
+		SizeOf.skipFinalField(false);
+		SizeOf.skipStaticField(true);
+		SizeOf.setMinSizeToLog(40);
+		long sSize = SizeOf.deepSizeOf("abc");
+		return sSize;
+	}
+}
