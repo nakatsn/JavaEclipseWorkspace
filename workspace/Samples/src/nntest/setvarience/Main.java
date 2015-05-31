@@ -1,9 +1,6 @@
 package nntest.setvarience;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import nntest.util.NNUtil;
